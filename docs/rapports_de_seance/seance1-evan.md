@@ -37,4 +37,5 @@ void loop() {
 
 ![Moteur pas-à-pas](assets/seance1/moteur_pas_a_pas.jpg)
 ![Branchements ULN2003APG](assets/seance1/branchements_ULN2003APG.jpg)
-![Moteur pas-à-pas en fonctionnement](assets/seance1/moteur_pas_a_pas_en_fonctionnement.mp4)
+
+https://user-images.githubusercontent.com/24252743/207671176-315f9538-9d44-416a-b018-0a31de14a4c6.mp4
