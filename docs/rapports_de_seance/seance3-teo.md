@@ -21,9 +21,37 @@ J'ai choisi de prendre un capteur qui se fixera à la verticale au tube et qui n
 
 Pour le moment le programme que j'ai fait est assez simple et a juste permis de détecter si une pièce passait devant et de compter le nombre de pièces qui est passé devant.  
 
-![image](https://user-images.githubusercontent.com/79744829/211820219-79ffd651-2c84-4607-9849-6d3ae3c8c057.png)
-![image](https://user-images.githubusercontent.com/79744829/211818491-589a1d76-98bc-45a1-b73f-ec865e528ff9.png)
+```cpp
+// Permet de compter le nombre de passages de la pièce devant le capteur infrarouge
 
+const int INFRAROUGE1= 10;
+int nombrePieces = 0;
+unsigned long dernierPassage = 0;
+unsigned long temps = 100; // Contiendra le temps écoulé depuis le début du programme
+
+void setup(){
+  pinMode(INFRAROUGE1,INPUT);
+  Serial.begin(9600); // vitesse de communication avec l'arduino
+}
+
+void loop(){
+  // On teste si le capteur infrarouge détecte un passage 
+  // On vérifie qu'aucun objet n'ait été détecté moins de 100millisecondes plus tôt.
+  if (digitalRead(INFRAROUGE1)==LOW && millis()-dernierPassage>=100){ 
+    Serial.println("pièce détectée");
+    nombrePieces+=1; // On incrémente le nombre de passages détectés par le capteur
+    dernierPassage = millis(); // On sauvegarde le temps écoulé entre le lancement du programme et ce passage
+    Serial.print("Nombre de pièces :"); // On affiche le nombre de passages sur le moniteur série
+    Serial.println(nombrePieces);
+  }
+}
+``` 
+
+![image](https://user-images.githubusercontent.com/79744829/211818491-589a1d76-98bc-45a1-b73f-ec865e528ff9.png)  
+
+Uploading IMG_9458 - Compressed with FlexClip.mp4…  
+
+Uploading IMG_9459 - Compressed with FlexClip.mp4…  
 
 ## La partie modélisation:  
 
