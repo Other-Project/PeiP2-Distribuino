@@ -11,7 +11,7 @@ J'ai effectué les branchements suivants :
 | Pin sur l'Arduino | Pin sur l'écran | Pin sur le potentiomètre 10K |
 |:-----------------:|:---------------:|:----------------------------:|
 |         5V        |     VDD<br>A    |                              |
-|        GND        |    VSS<br>RW    |            Gauche            |
+|        GND        | VSS<br>RW<br>K  |            Gauche            |
 |                   |        V0       |            Centre            |
 |         7         |        RS       |                              |
 |         8         |        E        |                              |
