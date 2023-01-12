@@ -49,9 +49,11 @@ void loop(){
 
 ![image](https://user-images.githubusercontent.com/79744829/211818491-589a1d76-98bc-45a1-b73f-ec865e528ff9.png)  
 
-Uploading IMG_9458 - Compressed with FlexClip.mp4…  
+https://user-images.githubusercontent.com/24252743/212019928-68504ad0-9cb5-4a2b-b036-74bf6e9d8f75.mp4
 
-Uploading IMG_9459 - Compressed with FlexClip.mp4…  
+https://user-images.githubusercontent.com/24252743/212019966-c19988e2-a1df-4e1a-bad1-67831ce1d69a.mp4
+
+
 
 ## La partie modélisation:  
 
