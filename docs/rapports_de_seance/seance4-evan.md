@@ -2,13 +2,15 @@
 
 ## Séance 4 : 18 janvier 2022
 
-### Présentation oral du projet
+### Présentation orale du projet
+
+Avec Téo, nous avons présenté notre projet durant 5 minutes à un jury composé de M. Charlon et de M. Peter puis, tous deux nous on posé quelques questions et on émit des recommandations pour la suite du projet.
 
 ### Gestion des articles
 
 J'ai implémenté un système de gestion des articles capable de connaitre le prix des articles ainsi que de vérifier la validé du code entré
 
-Dans un premier temps, j'ai utilisé la librairie [Dictionary](https://www.arduino.cc/reference/en/libraries/dictionary/) qui m'a permi d'associer un prix à un coce article
+Dans un premier temps, j'ai utilisé la librairie [Dictionary](https://www.arduino.cc/reference/en/libraries/dictionary/) qui m'a permis d'associer un prix à un code article
 
 ```cpp
 #include <Keypad.h>
@@ -88,7 +90,7 @@ void writeToScreen(int line, String text) {
 https://user-images.githubusercontent.com/24252743/213459873-f7ff2302-5194-409e-a2dc-9b17383bf209.mp4
 
 
-En suite, j'ai souhaité pouvoir afficher le nom de l'article sélectionné, j'ai donc crée une structure afin de faciliter l'accès aux données
+En suite, j'ai souhaité pouvoir afficher le nom de l'article sélectionné, j'ai donc créé une structure afin de faciliter l'accès aux données
 ```cpp
 struct Item {
   String itemCode;
