@@ -1,7 +1,6 @@
 #include <Keypad.h>
 #include <LiquidCrystal.h>
 #include <Stepper.h>
-#include <Dictionary.h>
 
 
 struct Item {
