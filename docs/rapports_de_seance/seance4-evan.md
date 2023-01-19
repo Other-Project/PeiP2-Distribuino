@@ -85,7 +85,10 @@ void writeToScreen(int line, String text) {
 }
 ```
 
-En suite, j'ai souhaitez pouvoir afficher le nom de l'article sélectionné, j'ai donc crée une structure afin de faciliter l'accès aux données
+https://user-images.githubusercontent.com/24252743/213459873-f7ff2302-5194-409e-a2dc-9b17383bf209.mp4
+
+
+En suite, j'ai souhaité pouvoir afficher le nom de l'article sélectionné, j'ai donc crée une structure afin de faciliter l'accès aux données
 ```cpp
 struct Item {
   String itemCode;
@@ -194,4 +197,4 @@ void writeToScreen(int line, String text) {
 }
 ```
 
-
+https://user-images.githubusercontent.com/24252743/213457605-0a6aa33a-0515-48f7-81d4-5080b71538fd.mp4
