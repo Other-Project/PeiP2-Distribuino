@@ -44,11 +44,15 @@ Je tiens quand même à ce qu'on ait un trieur de pièce donc je ne vais pas aba
 
 ## Le début du nouveau trieur:  
 
-J'ai découvert le site Inkscape pour faire des découpes laser que j'ai donc dû prendre en main et j'ai fait la rampe de trie des pièces qui cette fois marche.  
+J'ai découvert le site Inkscape pour faire des découpes laser que j'ai donc dû prendre en main et j'ai fait la rampe de trie des pièces qui cette fois marche. 
+
+![image](https://user-images.githubusercontent.com/79744829/216130239-5de9defe-70a0-4b5c-aaa7-3a4605b36134.png)
 
 https://user-images.githubusercontent.com/79744829/216062290-51b9a979-9d02-46e9-9bfa-1d73d8cbd94c.mp4  
 
 J'ai aussi refait des modélisations de tubes qui ressemblent au premier en modélisation 3d car j'ai pensé que pour les tubes la modélisation 3d restait le plus simple. J'en ai fait un et l'ai fait imprimer pour voir si ça marchait avant de faire et d'imprimer les autres sauf qu'il y a encore eu un problème à l'impression car les supports qui ont été mis était aussi durs que la modélisation donc ne pouvait pas être enlevés et remplissaient l'intérieur de tube empêchant les pièces de passer. On a donc relancer une nouvelle fois l'impression.  
+
+![image](https://user-images.githubusercontent.com/79744829/216117624-59fe3bfa-73c8-4bf9-afa3-96a0d3c8e773.png)  
 
 ## Conclusion:  
 
