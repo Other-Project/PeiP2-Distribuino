@@ -59,21 +59,31 @@ J'ai finalement choisi de garder cette version car je me suis dit que c'est cell
 
 ## La partie construction :  
 
-On a assemblé tous les côtés de la boîte à deux car les planches étaient assez lourdes et qu'on voulait être sûr de les mettre correctement, on a décidé de ne pas fixer la partie haute pour le moment ce qui nous permet de manipuler tout ce qu'on met à l'intérieur de la boîte plus facilement et de garder la face avant pour plus tard car on ne connaît pas encore la postion exacte de l'encoche qu'on devra faire pour insérer les pièces.  
+On a assemblé tous les côtés de la boîte à deux car les planches étaient assez lourdes et qu'on voulait être sûr de les mettre correctement, on a décidé de ne pas fixer la partie haute pour le moment ce qui nous permet de manipuler tout ce qu'on met à l'intérieur de la boîte plus facilement et de garder la face avant pour plus tard car on ne connaît pas encore la postion exacte de l'encoche qu'on devra faire pour insérer les pièces. On a fait les découpes et mesures des planches ensemble mais c'est evan qui a fait les trous qui permettront de visser les planches.
 
-
+![image](https://user-images.githubusercontent.com/79744829/219317474-e4b8380b-cf5e-4c2a-9e88-ab43a9a973d3.png)  
 
 J'ai vissé les capteurs infrarouges dans du bois que j'ai ensuite collé sur les tubes à l'endroit prévu. On a décidé de d'abord visser les capteurs dans du bois pour éviter de visser dans le plastique de peur que ça casse.  
 
-
+![image](https://user-images.githubusercontent.com/79744829/219317275-696b9b93-e58a-4f1b-9710-5b11878f1b75.png)  
 
 J'ai ensuite vissé tous les servo-moteurs sur la planche qui leur était destinée (une première fois à l'envers donc j'ai du tout démonté pour tout refaire car je n'avais pas fait attention).  
 
 ![image](https://user-images.githubusercontent.com/79744829/219138936-491b3562-d956-40a7-8fc5-9ba644277f88.png)  
 
+On a collé les différentes parties du rail qui trie les pièces ensemble :  
+
+![image](https://user-images.githubusercontent.com/79744829/219317196-290c24e8-81f6-4869-b9f4-a7de3141639e.png)  
+
+![image](https://user-images.githubusercontent.com/79744829/219316724-027a7d35-d300-471d-b34f-9e5a07b2f13d.png)  
+
 On a ensuite décidé de commencer à construire la partie trieur de pièces, on a donc collé la rampe qui trie les pièces en fonction de leur taille ainsi que toute la partie avec les tubes ( on a préféré le faire à deux car il fallait être assez précis).  
 
+## Le test:  
 
+On a testé le fonctionnement des servo-moteurs qui permettront de rendre la monnaie :  
+
+https://user-images.githubusercontent.com/79744829/219315831-a52dc6ba-7ef4-4b65-8d2b-ec19ad241fc2.mp4  
 
 ## Conclusion :  
 
