@@ -2,7 +2,7 @@
 
 ## Séance 6 : 8 février 2023
 
-### Retirage des supports des tubes qui contiendront les pièces
+### Retrait des supports des tubes qui contiendront les pièces
 
 Téo avait fait imprimer les tubes qui contiendront les pièces, ces tubes avaient des supports un peu partout, 
 je l'ai donc aidé à enlever les supports d'une partie des tubes pendant qu'il s'occupait des autres
