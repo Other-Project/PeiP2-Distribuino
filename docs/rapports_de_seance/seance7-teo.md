@@ -6,15 +6,19 @@ Depuis la dernière séance on a surtout travaillé à l'assemblage de notre dis
 
 J'ai fait une première découpe laser pour faire une planche qu'on a mis en dessous des tubes afin de soutenir les pièces, la planche comporte des trous qui permettent de fixer les servo-moteurs qui feront tomber les pièces pour rendre la monnaie et d'autres trous qui laisseront simplement passer les pièces de 1, 2, et 5 centimes que nous n'accepteront pas car elles seraient trop compliquées à gérer dans le rendu de la monnaie à cause de leur épaisseur trop faible. Les mesures des endroits qui devaient accueillir les servo-moteurs étaient assez compliquées à faire mais nécessitaient une grande précision donc j'ai dû refaire la planche une seconde fois après un premier essai qui n'avait pas marché. 
 
-
+![image](https://user-images.githubusercontent.com/79744829/219314827-20990bc1-846a-44c4-ac4d-1508db3b9051.png)  
 
 J'ai également fait les découpes laser des cases qui accueilleront les produits que l'on fera tomber, Evan a eu l'idée de les faire de telle façon qu'elles s'emboitent ce qui nous permet de les monter très rapidement et d'avoir une fixation assez solide.  
+
+![image](https://user-images.githubusercontent.com/79744829/219314239-6d72df59-94f3-41ae-b6da-d28427a7f18a.png)  
+
+![image](https://user-images.githubusercontent.com/79744829/219314443-73c7cf16-8207-4fbc-9e6d-fda611384b3c.png)  
 
 ![image](https://user-images.githubusercontent.com/79744829/219139026-220263f5-db5a-4f40-ab8d-4db970c17f98.png)  
 
 J'ai aussi fait la planche qui viendra derrière les cases pour supporter les moteurs pas à pas qui permettront de faire tomber les objets du distributeur.  
 
-
+![image](https://user-images.githubusercontent.com/79744829/219314598-ca20ff60-9a35-4ac1-ae81-14ce110bceca.png)  
 
 ## Les modélisation 3d :  
 
