@@ -20,6 +20,8 @@ J'ai aussi fait la planche qui viendra derrière les cases pour supporter les mo
 
 ![image](https://user-images.githubusercontent.com/79744829/219314598-ca20ff60-9a35-4ac1-ae81-14ce110bceca.png)  
 
+![image](https://user-images.githubusercontent.com/79744829/221599799-d11635d1-f2b8-4d2d-97f4-bb305b839d73.png)  
+
 ## Les modélisation 3d :  
 
 J'ai fait des supports que l'on va coller sur la planche qui supporte les servo-moteurs car il doit y avoir un écart très précis entre le bas du tube et là où les pièces seront retenues. Cependant, j'ai oublié de tenir compte de la hauteur qui dépasserait du servo-moteur donc j'ai dû recommencer.
@@ -63,6 +65,8 @@ On a assemblé tous les côtés de la boîte à deux car les planches étaient a
 
 ![image](https://user-images.githubusercontent.com/79744829/219317474-e4b8380b-cf5e-4c2a-9e88-ab43a9a973d3.png)  
 
+![image](https://user-images.githubusercontent.com/79744829/221600732-1ca08d16-05b7-47a9-af39-7b54acbcc63c.png)  
+
 J'ai vissé les capteurs infrarouges dans du bois que j'ai ensuite collé sur les tubes à l'endroit prévu. On a décidé de d'abord visser les capteurs dans du bois pour éviter de visser dans le plastique de peur que ça casse.  
 
 ![image](https://user-images.githubusercontent.com/79744829/219317275-696b9b93-e58a-4f1b-9710-5b11878f1b75.png)  
@@ -78,6 +82,14 @@ On a collé les différentes parties du rail qui trie les pièces ensemble :
 ![image](https://user-images.githubusercontent.com/79744829/219316724-027a7d35-d300-471d-b34f-9e5a07b2f13d.png)  
 
 On a ensuite décidé de commencer à construire la partie trieur de pièces, on a donc collé la rampe qui trie les pièces en fonction de leur taille ainsi que toute la partie avec les tubes ( on a préféré le faire à deux car il fallait être assez précis).  
+
+![image](https://user-images.githubusercontent.com/79744829/221600831-e231672d-fd46-4bc4-b95a-53254f3d0f53.png)    
+
+![image](https://user-images.githubusercontent.com/79744829/221601697-81eb5a9f-23a9-4be4-be20-cc487b45c015.png)  
+
+![image](https://user-images.githubusercontent.com/79744829/221601216-f4a70123-ef51-498a-9423-a9dadf93b954.png)  
+
+![image](https://user-images.githubusercontent.com/79744829/221602095-95905538-09af-42c3-a14b-4b2078442ee9.png)  
 
 ## Le test:  
 
