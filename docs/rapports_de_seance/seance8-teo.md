@@ -4,7 +4,7 @@ On a décidé de travailler entre la séance dernière et cette dernière séanc
 
 On a fait beaucoup de tests sur le système de trie de pièce qui ont été peu concluants et m'ont poussé à changer des choses pour le faire fonctionner correctement et on a aussi avancé la construction générale de notre projet.  
 
-## Les découpes laser :  
+## Les découpes :  
 
 J'ai fait les découpes laser de la face avant de notre distributeur qui est faite en deux parties qui seront collées car les dimensions étaient trop grandes pour la découpe laser, on a décidé de faire une gravure avec le nom de notre projet et on a mis un espace pour accueillir l'écran, un trou pour les files du digipad, un trou pour insérer les pièces et un trou pour récupérer la monnaie :  
 
@@ -28,7 +28,8 @@ Après avoir fait des tests, on s'est rendu compte que certaines pièces ne se t
 
 ![image](https://user-images.githubusercontent.com/79744829/221605796-5ffd5efd-9770-4ebd-ab90-4df95be8289b.png)  
 
-image film plastique pour trier les pieces correctement  
+image film plastique pour trier les pieces correctement.
+
 
 ## Les tests :  
 
@@ -43,16 +44,19 @@ On s'est aussi rendu compte en testant que le tube des pièces de 10 centimes n'
 
 De plus, un des servo-moteurs que j'avais fixé ne marchait pas donc j'ai dû démonter une nouvelle fois le trieur pour le changer et le remonter.  
 
-On s'est aperçu en déplaçant la boîte qu'il y avait des visses qui dépassaient dessous donc j'ai utilisé la lime pour éviter qu'on se fasse mal sans faire attention mais il faudra à terme les couper.  
+On s'est aperçu en déplaçant la boîte qu'il y avait des visses qui dépassaient dessous donc j'ai utilisé la lime et une scie à métaux pour les enlevées pour éviter qu'on se fasse mal sans faire attention. J'en ai aussi profité pour raccourcir les visses qui dépassaient de la face avant.  
 
 ![image](https://user-images.githubusercontent.com/79744829/221610503-06e4ce57-753b-44a9-910c-53cdde860043.png)  
 
-Par la suite, j'ai fait une rampe pour rendre les pièces, mais la pente était trop faible pour faire glisser les pièces donc j'ai dû en faire une autre qui puisse arriver au-dessus du bas des servo-moteurs et dans une matière qui glisse mieux.
+Par la suite, j'ai fait une rampe pour rendre les pièces, mais la pente était trop faible pour faire glisser les pièces donc j'ai dû en faire une autre qui puisse arriver au-dessus du bas des servo-moteurs et dans une matière qui glisse mieux. J'ai donc collé un autocollant qui permet aux pièces de mieux glisser sur la nouvelle rampe et fait des guides pour que la pièce ne sorte pas de la rampe :  
 
 ![image](https://user-images.githubusercontent.com/79744829/221610174-691e8965-57fd-4f1b-89c5-efff9d0485ed.png)  
 
 ![image](https://user-images.githubusercontent.com/79744829/221610244-710a8dc5-0015-4ac2-9879-c29a249e7a5f.png)  
 
- 
+ ![image](https://user-images.githubusercontent.com/79744829/221951007-5716aee4-71d6-42e7-a96e-86356d06cc8f.png)  
 
+De plus, Evan s'est rendu compte en testant les capteurs infrarouges qu'ils ne marchaient pas probablement parcequ'ils étaient trop loin des tubes, j'ai donc limer toutes les surfaces sur lesquelles on avait coller les capteurs afin qu'ils soient plus proches du tube :  
+
+![image](https://user-images.githubusercontent.com/79744829/221951456-8b0fcaaf-1f3f-465f-929f-d31130cf4f7a.png)  
 
