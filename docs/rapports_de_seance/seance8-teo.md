@@ -28,8 +28,29 @@ Après avoir fait des tests, on s'est rendu compte que certaines pièces ne se t
 
 ![image](https://user-images.githubusercontent.com/79744829/221605796-5ffd5efd-9770-4ebd-ab90-4df95be8289b.png)  
 
-image film plastique pour trier les pieces correctement.
+Puis, j'ai fait des découpes pour rendre la face avant plus jolie, elle est passé de ça :  
 
+![image](https://user-images.githubusercontent.com/79744829/222254597-0d9894ce-9cbe-4792-bffc-de73a0aeded0.png)
+
+A ça :  
+
+![image](https://user-images.githubusercontent.com/79744829/222254673-d8b88c20-a6dc-4f72-ac02-09cd5bdb2f04.png)  
+
+Par la suite j'ai aussi fait une découpe laser pour cacher le vide qu'il y a sous la partie qui permet de faire tomber les objets :  
+
+![image](https://user-images.githubusercontent.com/79744829/222254884-e146e3bd-a6f6-4189-86af-1bf8c8703eff.png)  
+
+Ensuite, j'ai fait des pieds à notre distributeur afin de le surélever un peu du sol pour le rendre plus jolie et de pouvoir le transporter correctement :  
+
+![image](https://user-images.githubusercontent.com/79744829/222255113-4090f00d-ee73-4a5f-b348-f219f4fc1c6a.png)
+
+![image](https://user-images.githubusercontent.com/79744829/222255243-42b09166-7557-47eb-aa86-67341b51830e.png)  
+
+![image](https://user-images.githubusercontent.com/79744829/222255301-6f92ba38-fbd1-4818-91cb-f91111daea42.png)  
+
+ Enfin, j'ai découpé des rectangles que j'ai assemblé afin de faire un espace pour que l'utilisateur puisse récupérer sa monnaie sans qu'elle tombe par terre :  
+ 
+ ![image](https://user-images.githubusercontent.com/79744829/222255530-24729b8c-f690-43ce-b80f-a8f93b85b18d.png)  
 
 ## Les tests :  
 
@@ -60,3 +81,10 @@ De plus, Evan s'est rendu compte en testant les capteurs infrarouges qu'ils ne m
 
 ![image](https://user-images.githubusercontent.com/79744829/221951456-8b0fcaaf-1f3f-465f-929f-d31130cf4f7a.png)  
 
+Par la suite, en faisant des tests Evan s'est rendu compte qu'on aurait besoin d'une alimentation 5V donc j'en ai pris une et je l'ai adaptée pour pouvoir y mettre un adaptateur pour l'arduino:  
+
+![image](https://user-images.githubusercontent.com/79744829/222255776-769bb7b4-51f7-4844-b419-795413e72647.png)
+
+## Conclusion :  
+
+Nous sommes assez content de nous et de notre projet même s'il ne fonctionnait par parfaitement à la fin de la séance mais on va essayer de le finir chez nous. On a tout de même fait face à de nombreux problèmes tout au long du projet mais nous n'avons pas baissé les bras et sommes resté motivé à trouver une solution à chacun des problèmes. On a ainsi appris beaucoup de choses et en particulier qu'il est très difficile de respecter le planning des choses que l'on doit faire.
