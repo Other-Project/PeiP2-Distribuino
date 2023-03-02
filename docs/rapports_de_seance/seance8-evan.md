@@ -9,15 +9,6 @@ Comme j'avais oublié de faire une encoche pour passer les câbles, j'ai découp
 Puis j'ai visser avec des boulons les moteurs pas à pas. 
 Malheureusement, il n'y avait pas assez de boulons, je vais devoir en acheter pour visser les moteurs restants.
 
-### Tests des servo-moteurs servant au rendu des pièces
-
-J'ai fait plusieurs tests pour trouver l'angle nessessaire pour pousser la pièce en dehors du stockage.
-En suite, j'ai monté la planche soutenant les pièces sur le reste du distributeur.
-Se faisait, j'ai remarqué que la hauteur de certains supports n'etait pas suffisante pour bloquer les pièces supperieure du tube.
-Téo a donc fait réimprimer les quelques pièces à changer.
-
-https://user-images.githubusercontent.com/24252743/222396370-0d3673e9-cfa8-4cbd-a336-67f6afa55b99.mp4
-
 ### Calibrage des capteurs infra-rouge
 
 J'ai essayer de faire fonctionner les capteurs infra-rouge devant capter le passage d'une pièce dans le tube.
@@ -25,6 +16,19 @@ Outre certains capteurs defectueux, j'ai remarqué que les capteurs étaient tro
 Téo a donc réduit l'écartement des capteurs à la dremel, ce qui a permi une nette amélioration de la detection.
 En revanche, le calibrage n'est toujours pas parfait et la detection ne se fait pas toujours correctement.
 Les potentiomètres sont pas assez precis pour un calibrage efficace, comme les capteurs disposent d'une sortie analogique en plus d'une sortie digitale, j'ai la possibilité si necessaire de faire le calibrage dans le code.
+
+https://user-images.githubusercontent.com/24252743/222414979-ab9823aa-37fc-4148-a2f4-29b1150eda77.mp4
+
+### Tests des servo-moteurs servant au rendu des pièces
+
+J'ai fait plusieurs tests pour trouver l'angle nessessaire pour pousser la pièce en dehors du stockage.
+En suite, j'ai monté la planche soutenant les pièces sur le reste du distributeur.
+Se faisait, j'ai remarqué que la hauteur de certains supports n'etait pas suffisante pour bloquer les pièces supperieure du tube.
+Téo a donc fait réimprimer les quelques pièces à changer.
+
+https://user-images.githubusercontent.com/24252743/222415055-9025bd55-9fcc-45de-89fa-96ab0aa629d1.mp4
+
+https://user-images.githubusercontent.com/24252743/222396370-0d3673e9-cfa8-4cbd-a336-67f6afa55b99.mp4
 
 ### Réduction du nombre de cables à brancher sur la carte Arduino
 
