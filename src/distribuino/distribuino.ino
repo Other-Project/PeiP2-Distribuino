@@ -1,71 +1,78 @@
 #include <Keypad.h>
-#include <LiquidCrystal.h>
+#include <LiquidCrystal_I2C.h>
 #include <Stepper.h>
 #include <Servo.h>
 
 
 struct Item {
-  String itemCode;
-  String itemName;
-  float itemPrice;
+  String itemCode; // Le code à taper
+  String itemName; // Le nom du produit
+  float itemPrice; // Le prix du produit
+  Stepper stepper; // Le moteur pas à pas correspondant
 };
 
 struct Coin {
-  float coinValue;
-  int captorPin;
-  int servoPin;
+  float coinValue; // La valeur de la pièce
+  int captorPin; // Le numéro du pin sur lequel est branché le capteur infrarouge
+  int servoPin; // Le numéro du pin sur lequel est branché le servo-moteur
 };
 
-const int ROW_NUM = 4; //four rows
-const int COLUMN_NUM = 4; //four columns
+
+const int codeLength = 4; // La taille des codes produits
+
+const int ROW_NUM = 4; // Nombre de lignes du keypad
+const int COLUMN_NUM = 4; // Nombre de colonne
 char keys[ROW_NUM][COLUMN_NUM] = {
   {'1','2','3', 'A'},
   {'4','5','6', 'B'},
   {'7','8','9', 'C'},
   {'*','0','#', 'D'}
 };
-byte pin_rows[ROW_NUM] = {47, 49, 51, 53}; //connect to the row pinouts of the keypad
-byte pin_column[COLUMN_NUM] = {46, 48, 50, 52}; //connect to the column pinouts of the keypad
+byte pin_rows[ROW_NUM] = {47, 49, 51, 53}; // Les numéros de pin des lignes
+byte pin_column[COLUMN_NUM] = {46, 48, 50, 52}; // Les numéros de pin des colonnes
 Keypad keypad = Keypad(makeKeymap(keys), pin_rows, pin_column, ROW_NUM, COLUMN_NUM);
 
 
-LiquidCrystal lcd(31, 33, 35, 30, 32, 34);
+LiquidCrystal_I2C lcd(0x27, 16, 2); // Ecran LCD branché à l'adresse 0x27 (trouvable grace au programme fourni) pouvant afficher 16 char par ligne et disposant de 2 lignes
 
 
-const int stepsPerRevolution = 2038;
-const int rpm = 16;
-Stepper stepper1 = Stepper(stepsPerRevolution, 9, 11, 8, 10);
-
-const int captors = 5;
+const int captors = 5; // Nombre de capteurs
 const Coin coinCaptors[] = {
-  {0.1, 41, 2},
-  {0.2, 42, 3},
-  {0.5, 43, 4},
-  {1.0, 44, 5},
-  {2.0, 45, 6}
+  {0.1, 2, 9},
+  {0.2, 3, 10},
+  {0.5, 5, 12},
+  {1.0, 4, 11},
+  {2.0, 6, 13}
 };
 Servo servo[captors];
 
 
+const int stepsPerRevolution = 2038;
+const int rpm = 16;
+
+const int itemNumber = 4; // Nombre d'articles différents en vente
 Item items[] = {
-  {"123A", "Bonbons", 2.5},
-  {"456B", "Kitkat", 2.0},
-  {"789C", "", 2.1},
-  {"0000", "C'est un code pin", 3.0}
+  {"123A", "Bonbons", 2.5, Stepper(stepsPerRevolution, 24,28,22,26)},
+  {"456B", "Kitkat", 2.0, Stepper(stepsPerRevolution, 32, 36, 30,34)},
+  {"789C", "Tictac", 2.1, Stepper(stepsPerRevolution, 25,29,23,27)},
+  {"0000", "C'est un code pin", 3.0, Stepper(stepsPerRevolution, 33, 37, 31,35)}
 };
-
-
-const int codeLength = 4;
 
 
 void setup() {
   Serial.begin(9600);
-  lcd.begin(16, 2);
-  stepper1.setSpeed(rpm);
 
+  // Initialisation de l'écran
+  lcd.init();
+  lcd.backlight();
+
+  for(int i = 0; i < itemNumber; i++) items[i].stepper.setSpeed(rpm); // On défini la vitesse de rotation des moteurs pas à pas
+
+  // Initialisation des capteurs infrarouges et des servo-moteurs
   for(int i = 0; i < captors; i++) {
     pinMode(coinCaptors[i].captorPin, INPUT);
     servo[i].attach(coinCaptors[i].servoPin);
+    servo[i].write(150);
   }
 
   Serial.println("Le programme a démarré");
@@ -75,7 +82,7 @@ void writeToScreen(int line, String text) {
   // Clears the screen line
   for(int i = 0; i < 16; i++){
     lcd.setCursor(i, line);
-    lcd.write(" ");
+    lcd.print(" ");
   }
 
   // Writes the text
@@ -112,8 +119,8 @@ String waitForCode(){
 Item* checkCode(String productCode) {
   Serial.print("Le code saisie (");
   Serial.print(productCode);
-  for(int i = 0; i <= 4; i++) {
-      if(i == 4)
+  for(int i = 0; i <= itemNumber; i++) {
+      if(i == itemNumber)
       {
         writeToScreen(1, "Code invalide");
         Serial.println(") est invalide");
@@ -138,6 +145,12 @@ float waitForCoins(Item* item) {
   float sum = 0;
 
   while(sum < item->itemPrice) {
+    char key = keypad.getKey();
+    if(key == '*' | key == '#') {
+        Serial.println("---- Annulation de la transaction ----");
+        return -sum; // Cancel
+      }
+    
     if(millis()-dernierPassage < 50) continue;
     for(int i = 0; i < captors; i++){
       
@@ -172,7 +185,7 @@ float waitForCoins(Item* item) {
 }
 
 
-void giveMoneyBack(float amount){
+void giveMoneyBack(float amount) {
   for(int i = captors - 1; i >= 0; i--){
     float coinValue = coinCaptors[i].coinValue;
     int quantity = int(amount / coinValue);
@@ -188,15 +201,16 @@ void giveMoneyBack(float amount){
     Serial.print(remaining);
     Serial.println("€");
 
-    servo[i].write(140);
-    delay(100);
-    servo[i].write(0);
-    delay(100);
+    for(int j = 0; j < quantity; j++) {
+      servo[i].write(40);
+      delay(375);
+      servo[i].write(150);
+      delay(750);
+    }
 
     amount = remaining;
   }
 }
-
 
 
 void loop() {
@@ -209,11 +223,14 @@ void loop() {
   Serial.print(item->itemPrice);
   Serial.println("€)");
   float surplus = waitForCoins(item);
-  
-  Serial.print("Distribution de ");
-  Serial.println(item->itemName);
-  writeToScreen(1, "Distribution...");
-  stepper1.step(stepsPerRevolution);
+
+  if(surplus >= 0){
+    Serial.print("Distribution de ");
+    Serial.println(item->itemName);
+    writeToScreen(1, "Distribution...");
+    item->stepper.step(stepsPerRevolution);
+  }
+  else surplus *= -1;
 
   writeToScreen(1, "Rendu monnaie");
   giveMoneyBack(surplus);
