@@ -16,6 +16,8 @@ En suite, j'ai monté la planche soutenant les pièces sur le reste du distribut
 Se faisait, j'ai remarqué que la hauteur de certains supports n'etait pas suffisante pour bloquer les pièces supperieure du tube.
 Téo a donc fait réimprimer les quelques pièces à changer.
 
+https://user-images.githubusercontent.com/24252743/222396370-0d3673e9-cfa8-4cbd-a336-67f6afa55b99.mp4
+
 ### Calibrage des capteurs infra-rouge
 
 J'ai essayer de faire fonctionner les capteurs infra-rouge devant capter le passage d'une pièce dans le tube.
