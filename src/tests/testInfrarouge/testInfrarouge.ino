@@ -1,12 +1,14 @@
 // Permet de compter le nombre de passages de la pièce devant le capteur infrarouge
 
-const int INFRAROUGE1= 44;
+const int INFRAROUGE1= 2;
 unsigned long dernierPassage = 0; // Contiendra le temps écoulé depuis le début du programme
 int nombrePieces = 0;
 
 void setup(){
   pinMode(INFRAROUGE1,INPUT);
   Serial.begin(9600); // vitesse de communication avec l'arduino
+
+  Serial.println("Debut");
 }
 
 void loop() {
