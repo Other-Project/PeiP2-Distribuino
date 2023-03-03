@@ -1,6 +1,6 @@
 // Permet de compter le nombre de passages de la pièce devant le capteur infrarouge
 
-const int INFRAROUGE1= 2;
+const int INFRAROUGE1= 6;
 unsigned long dernierPassage = 0; // Contiendra le temps écoulé depuis le début du programme
 int nombrePieces = 0;
 

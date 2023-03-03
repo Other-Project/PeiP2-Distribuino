@@ -140,37 +140,34 @@ Item* checkCode(String productCode) {
 }
 
 float waitForCoins(Item* item) {
-  unsigned long dernierPassage; // Contiendra le temps écoulé depuis le début du programme
-  bool detected[captors];
+  int last_state[captors];
   float sum = 0;
 
   while(sum < item->itemPrice) {
-    char key = keypad.getKey();
-    if(key == '*' | key == '#') {
-        Serial.println("---- Annulation de la transaction ----");
-        return -sum; // Cancel
-      }
-    
-    if(millis()-dernierPassage < 50) continue;
+	char key = keypad.getKey();
+   if(key == '*' | key == '#') {
+      Serial.println("---- Annulation de la transaction ----");
+      return -sum; // Cancel
+   }
+		
     for(int i = 0; i < captors; i++){
-      
-      // On teste si le capteur infrarouge détecte un passage 
-      // On vérifie qu'aucun objet n'ait été détecté moins de 250 millisecondes plus tôt.
-      if (digitalRead(coinCaptors[i].captorPin) == LOW && !detected[i]) {
-        detected[i] = true;
+      int state = digitalRead(coinCaptors[i].captorPin);
+
+      // On teste si le capteur infrarouge détecte un passage
+      if (last_state[i] == HIGH && state == LOW) {
         
         Serial.print("pièce de ");
         Serial.print(coinCaptors[i].coinValue);
         Serial.println(" détectée");
         
-        sum += coinCaptors[i].coinValue; // On incrémente le nombre de passages détectés par le capteur
-
+        sum += coinCaptors[i].coinValue;
+		  
         float remaining = item->itemPrice - sum;
         if(remaining > 0) writeToScreen(1, "Inserer " + String(remaining) + "e");
       }
-      else detected[i] = false;
+      
+      last_state[i] = state;
     }
-    dernierPassage = millis(); // On sauvegarde le temps écoulé entre le lancement du programme et ce passage
   }
 
   float surplus = sum - item->itemPrice;

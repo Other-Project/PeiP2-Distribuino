@@ -12,7 +12,7 @@ struct Coin {
 
 LiquidCrystal_I2C lcd(0x27, 16, 2); // Ecran LCD branché à l'adresse 0x27 (trouvable grace au programme fourni) pouvant afficher 16 char par ligne et disposant de 2 lignes
 
-const int captors = 2; // Nombre de capteurs
+const int captors = 5; // Nombre de capteurs
 const Coin coinCaptors[] = {
   {0.1, 2, 9},
   {0.2, 3, 10},
@@ -36,7 +36,7 @@ void setup() {
     servo[i].write(150);
   }
 
-  Serial.println("Le programme a démarré");
+  Serial.println("Le programme de test a démarré");
 }
 
 void writeToScreen(int line, String text) {
@@ -52,32 +52,28 @@ void writeToScreen(int line, String text) {
 }
 
 float waitForCoins(float price) {
-  unsigned long dernierPassage; // Contiendra le temps écoulé depuis le début du programme
-  bool detected[captors];
+  int last_state[captors];
   float sum = 0;
 
   while(sum < price) {
-    
-    //if(millis()-dernierPassage < 25) continue;
     for(int i = 0; i < captors; i++){
-      
-      // On teste si le capteur infrarouge détecte un passage 
-      // On vérifie qu'aucun objet n'ait été détecté moins de 250 millisecondes plus tôt.
-      if (digitalRead(coinCaptors[i].captorPin) == LOW && !detected[i]) {
-        detected[i] = true;
+      int state = digitalRead(coinCaptors[i].captorPin);
+
+      // On teste si le capteur infrarouge détecte un passage
+      if (last_state[i] == HIGH && state == LOW) {
         
         Serial.print("pièce de ");
         Serial.print(coinCaptors[i].coinValue);
         Serial.println(" détectée");
         
-        sum += coinCaptors[i].coinValue; // On incrémente le nombre de passages détectés par le capteur
+        sum += coinCaptors[i].coinValue;
 
-        float remaining = price - sum;
-        if(remaining > 0) writeToScreen(1, "Inserer " + String(remaining) + "e");
+        writeToScreen(0, String(int(millis() / 1000)) + "s");
+        writeToScreen(1, String(coinCaptors[i].coinValue) + "e detectee");
       }
-      else detected[i] = false;
+      
+      last_state[i] = state;
     }
-    dernierPassage = millis(); // On sauvegarde le temps écoulé entre le lancement du programme et ce passage
   }
 
   float surplus = sum - price;
@@ -121,6 +117,8 @@ void giveMoneyBack(float amount) {
 
 
 void loop() {
+  writeToScreen(0, "");
+	writeToScreen(1, "Mettre piece");
   float surplus = waitForCoins(0.02) + 0.02;
   waitForCoins(surplus);
   delay(500);
