@@ -27,7 +27,8 @@ char keys[ROW_NUM][COLUMN_NUM] = {
     {'1', '2', '3', 'A'},
     {'4', '5', '6', 'B'},
     {'7', '8', '9', 'C'},
-    {'*', '0', '#', 'D'}};
+    {'*', '0', '#', 'D'}
+};
 byte pin_rows[ROW_NUM] = {47, 49, 51, 53};      // Les numéros de pin des lignes
 byte pin_column[COLUMN_NUM] = {46, 48, 50, 52}; // Les numéros de pin des colonnes
 Keypad keypad = Keypad(makeKeymap(keys), pin_rows, pin_column, ROW_NUM, COLUMN_NUM);
@@ -42,7 +43,7 @@ const Coin coinCaptors[] = {
     {0.2, 3, 10},
     {0.5, 5, 12},
     {1.0, 4, 11},
-  {2.0, 6, 13}
+    {2.0, 6, 13}
 };
 Servo servo[captors];
 
@@ -105,19 +106,23 @@ String waitForCode()
     char key = keypad.getKey();
     if (key)
     {
-
       Serial.print("Saisie reçu: ");
       Serial.print(key);
 
-      if (key == '*' | key == '#')
+      if (key == '*' || (key == '#' & productCode.length() <= 1))
       {
         Serial.println(", réinitialisation");
         return waitForCode(); // Cancel
       }
+      else if (key == '#')
+      {
+        Serial.print(", suppression du dernier charactère (" + String(productCode.charAt(productCode.length() - 1)) + ")");
+        productCode = productCode.substring(0, productCode.length() - 1);
+      }
       else productCode += key;
 
-      Serial.print(", saisie totale: ");
-      Serial.println(productCode);
+      Serial.println(", saisie totale: " + String(productCode));
+      writeToScreen(0, "Code produit ?");
       writeToScreen(1, productCode);
     }
   }
@@ -125,8 +130,7 @@ String waitForCode()
 }
 
 Item* checkCode(String productCode) {
-  Serial.print("Le code saisie (");
-  Serial.print(productCode);
+  Serial.print("Le code saisie (" + String(productCode));
   for (int i = 0; i <= itemNumber; i++)
   {
     if (i == itemNumber)
@@ -139,9 +143,7 @@ Item* checkCode(String productCode) {
     }
     else if (items[i].itemCode == productCode)
     {
-      Serial.print(") est valide (");
-      Serial.print(items[i].itemName);
-      Serial.println(")");
+      Serial.println(") est valide (" + String(items[i].itemName) + ")");
       writeToScreen(0, items[i].itemName);
       writeToScreen(1, "Inserer " + String(items[i].itemPrice) + "e");
       return &items[i];
@@ -169,11 +171,7 @@ float waitForCoins(Item* item) {
       // On teste si le capteur infrarouge détecte un passage
       if (last_state[i] == HIGH && state == LOW)
       {
-
-        Serial.print("pièce de ");
-        Serial.print(coinCaptors[i].coinValue);
-        Serial.println(" détectée");
-
+        Serial.println("pièce de " + String(coinCaptors[i].coinValue) + " détectée");
         sum += coinCaptors[i].coinValue;
 
         float remaining = item->itemPrice - sum;
@@ -185,13 +183,7 @@ float waitForCoins(Item* item) {
   }
 
   float surplus = sum - item->itemPrice;
-  Serial.print("Total ");
-  Serial.print(sum);
-  Serial.print("€ / ");
-  Serial.print(item->itemPrice);
-  Serial.print("€ demandés, exédant ");
-  Serial.print(surplus);
-  Serial.println("€");
+  Serial.println("Total " + String(sum) + "€ / " + String(item->itemPrice) + "€ demandés, exédant " + String(surplus) + "€");
   return surplus;
 }
 
@@ -202,16 +194,7 @@ void giveMoneyBack(float amount)
     float coinValue = coinCaptors[i].coinValue;
     int quantity = round(amount * 10) / int(coinValue * 10);
     float remaining = amount - coinValue * quantity;
-
-    Serial.print("Reste à rembourser ");
-    Serial.print(amount);
-    Serial.print("€, rendu de ");
-    Serial.print(quantity);
-    Serial.print(" pièces de ");
-    Serial.print(coinValue);
-    Serial.print("€, restant ");
-    Serial.print(remaining);
-    Serial.println("€");
+    Serial.println("Reste à rembourser " + String(amount) + "€, rendu de " + String(quantity) + " pièces de " + String(coinValue) + "€, restant " + String(remaining) + "€");
 
     for (int j = 0; j < quantity; j++)
     {
@@ -232,15 +215,12 @@ void loop()
   Item* item = checkCode(productCode);
   if (item == NULL) return;
 
-  Serial.print("En attente de paiement (");
-  Serial.print(item->itemPrice);
-  Serial.println("€)");
+  Serial.println("En attente de paiement (" + String(item->itemPrice) + "€)");
   float surplus = waitForCoins(item);
 
   if (surplus >= 0)
   {
-    Serial.print("Distribution de ");
-    Serial.println(item->itemName);
+    Serial.println("Distribution de " + String(item->itemName));
     writeToScreen(1, "Distribution...");
     item->stepper.step(stepsPerRevolution);
   }
@@ -249,6 +229,7 @@ void loop()
   writeToScreen(1, "Rendu monnaie");
   giveMoneyBack(surplus);
 
+  writeToScreen(0, "Distribuino");
   writeToScreen(1, "Merci a bientot");
   Serial.println("---- Fin de la transaction ----");
   delay(3000);
