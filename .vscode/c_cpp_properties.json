@@ -20,7 +20,8 @@
                 "_DEBUG",
                 "UNICODE",
                 "_UNICODE"
-            ]
+            ],
+            "compileCommands": "${workspaceFolder}/src/.buildfiles/compile_commands.json"
         },
         {
             "name": "Arduino",

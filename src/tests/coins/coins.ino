@@ -91,7 +91,7 @@ float waitForCoins(float price) {
 void giveMoneyBack(float amount) {
   for(int i = captors - 1; i >= 0; i--){
     float coinValue = coinCaptors[i].coinValue;
-    int quantity = int(amount / coinValue);
+    int quantity = round(amount * 10) / int(coinValue * 10);
     float remaining = amount - coinValue * quantity;
 
     Serial.print("Reste à rembourser ");
@@ -120,8 +120,5 @@ void loop() {
   writeToScreen(0, "");
 	writeToScreen(1, "Mettre piece");
   float surplus = waitForCoins(0.02) + 0.02;
-  waitForCoins(surplus);
-  delay(500);
-  giveMoneyBack(surplus);
   giveMoneyBack(surplus);
 }
