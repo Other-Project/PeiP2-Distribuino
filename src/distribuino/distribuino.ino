@@ -161,7 +161,7 @@ float waitForCoins(Item* item) {
     if (key == '*' | key == '#')
     {
       Serial.println("---- Annulation de la transaction ----");
-      return -sum; // Cancel
+      return sum == 0 ? -9999 : -sum; // Cancel
     }
 
     for (int i = 0; i < captors; i++)
@@ -224,7 +224,8 @@ void loop()
     writeToScreen(1, "Distribution...");
     item->stepper.step(stepsPerRevolution);
   }
-  else surplus *= -1;
+  else if(surplus == -9999) return; // Cancelled the transaction before paying anything
+  else surplus *= -1; // Started to pay before cancelling
 
   writeToScreen(1, "Rendu monnaie");
   giveMoneyBack(surplus);
