@@ -120,5 +120,6 @@ void loop() {
   writeToScreen(0, "");
 	writeToScreen(1, "Mettre piece");
   float surplus = waitForCoins(0.02) + 0.02;
+  delay(500);
   giveMoneyBack(surplus);
 }
