@@ -3,8 +3,8 @@ Le projet consiste à faire un distributeur de bonbons et de confiseries comme c
 
 Nous devrons pouvoir :
 
-* Sélectionner l'article souhaité
-* Afficher les différentes instructions à l'écran
-* Payer
-* Faire tomber l'article
-* Récupérer la monnaie correspondant à la différence
+*	Sélectionner l’article souhaité avec un keypad.
+*	Afficher les instructions à l’écran.
+*	Trier les pièces 
+*	Rendre la monnaie.
+*	Faire tomber l’objet quand l’utilisateur a payé.
