@@ -1,6 +1,6 @@
-#include <Keypad.h>
+ #include <Keypad.h>
 #include <LiquidCrystal_I2C.h>
-#include <Stepper.h>
+#include <AccelStepper.h>
 #include <Servo.h>
 
 struct Item
@@ -8,7 +8,7 @@ struct Item
   String itemCode; // Le code à taper
   String itemName; // Le nom du produit
   float itemPrice; // Le prix du produit
-  Stepper stepper; // Le moteur pas à pas correspondant
+  AccelStepper stepper; // Le moteur pas à pas correspondant
 };
 
 struct Coin
@@ -19,7 +19,7 @@ struct Coin
 };
 
 
-const int codeLength = 4; // La taille des codes produits
+const int codeLength = 3; // La taille des codes produits
 
 const int ROW_NUM = 4;    // Nombre de lignes du keypad
 const int COLUMN_NUM = 4; // Nombre de colonne
@@ -29,8 +29,8 @@ char keys[ROW_NUM][COLUMN_NUM] = {
     {'7', '8', '9', 'C'},
     {'*', '0', '#', 'D'}
 };
-byte pin_rows[ROW_NUM] = {47, 49, 51, 53};      // Les numéros de pin des lignes
-byte pin_column[COLUMN_NUM] = {46, 48, 50, 52}; // Les numéros de pin des colonnes
+byte pin_rows[ROW_NUM] = {52, 50, 48, 46};      // Les numéros de pin des lignes
+byte pin_column[COLUMN_NUM] = {51, 47, 49, 53}; // Les numéros de pin des colonnes
 Keypad keypad = Keypad(makeKeymap(keys), pin_rows, pin_column, ROW_NUM, COLUMN_NUM);
 
 
@@ -53,10 +53,10 @@ const int rpm = 16;
 
 const int itemNumber = 4; // Nombre d'articles différents en vente
 Item items[] = {
-    {"123A", "Bonbons", 2.5, Stepper(stepsPerRevolution, 24, 28, 22, 26)},
-    {"456B", "Kitkat", 2.0, Stepper(stepsPerRevolution, 32, 36, 30, 34)},
-    {"789C", "Tictac", 2.1, Stepper(stepsPerRevolution, 25, 29, 23, 27)},
-    {"0000", "C'est un code pin", 3.0, Stepper(stepsPerRevolution, 33, 37, 31, 35)}
+    {"B17", "Bonbons", 2.5, AccelStepper(AccelStepper::FULL4WIRE, 22, 26, 24, 28, false)},
+    {"A12", "Colle", 2.3, AccelStepper(AccelStepper::FULL4WIRE, 32, 36, 30, 34, false)},
+    {"C28", "Tictac", 2.1, AccelStepper(AccelStepper::FULL4WIRE, 25, 29, 23, 27, false)},
+    {"A22", "Gauffre", 2.8, AccelStepper(AccelStepper::FULL4WIRE, 31, 35, 33, 37, false)}
 };
 
 void setup()
@@ -67,8 +67,10 @@ void setup()
   lcd.init();
   lcd.backlight();
 
-  for (int i = 0; i < itemNumber; i++)
-    items[i].stepper.setSpeed(rpm); // On défini la vitesse de rotation des moteurs pas à pas
+  for (int i = 0; i < itemNumber; i++){
+    items[i].stepper.setMaxSpeed(300.0);
+    items[i].stepper.setAcceleration(100.0);
+  }
 
   // Initialisation des capteurs infrarouges et des servo-moteurs
   for (int i = 0; i < captors; i++)
@@ -93,6 +95,20 @@ void writeToScreen(int line, String text)
   // Writes the text
   lcd.setCursor(0, line);
   lcd.print(text);
+}
+
+
+
+void giveCoin(int i){
+  servo[i].write(40);
+  delay(375);
+  servo[i].write(150);
+  delay(750);
+}
+
+void getAllCoins(){
+  for (int i = 0; i < captors; i++)
+    for (int j = 0; j < 10; j++) giveCoin(i);
 }
 
 String waitForCode()
@@ -130,6 +146,8 @@ String waitForCode()
 }
 
 Item* checkCode(String productCode) {
+  if(productCode == "DDD") { getAllCoins(); return NULL;}
+  
   Serial.print("Le code saisie (" + String(productCode));
   for (int i = 0; i <= itemNumber; i++)
   {
@@ -196,13 +214,7 @@ void giveMoneyBack(float amount)
     float remaining = amount - coinValue * quantity;
     Serial.println("Reste à rembourser " + String(amount) + "€, rendu de " + String(quantity) + " pièces de " + String(coinValue) + "€, restant " + String(remaining) + "€");
 
-    for (int j = 0; j < quantity; j++)
-    {
-      servo[i].write(40);
-      delay(375);
-      servo[i].write(150);
-      delay(750);
-    }
+    for (int j = 0; j < quantity; j++) giveCoin(i);
 
     amount = remaining;
   }
@@ -222,7 +234,10 @@ void loop()
   {
     Serial.println("Distribution de " + String(item->itemName));
     writeToScreen(1, "Distribution...");
-    item->stepper.step(stepsPerRevolution);
+    item->stepper.enableOutputs();
+    item->stepper.move(stepsPerRevolution);
+    item->stepper.runToPosition();
+    item->stepper.disableOutputs();
   }
   else if(surplus == -9999) return; // Cancelled the transaction before paying anything
   else surplus *= -1; // Started to pay before cancelling

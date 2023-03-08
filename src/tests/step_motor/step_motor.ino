@@ -1,7 +1,7 @@
 #include <Stepper.h>
 const int stepsPerRevolution = 2048;
 const int rpm = 12;
-Stepper stepper1 = Stepper(stepsPerRevolution, 22, 26, 24, 28);
+Stepper stepper1 = Stepper(stepsPerRevolution, 31, 35, 33, 37);
 
 void setup() {
   stepper1.setSpeed(rpm);
