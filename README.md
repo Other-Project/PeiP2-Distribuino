@@ -9,3 +9,5 @@
 * [Cahier des charges](docs/cahier_des_charges.md)
 * [Répartition du travail](docs/repartition_du_travail.md)
 * [Rapports de séance](docs/rapports_de_seance/README.md)
+
+![Schéma électrique](docs/schema_electrique.png)
